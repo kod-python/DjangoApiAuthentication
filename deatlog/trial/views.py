@@ -34,8 +34,7 @@ class UserLoginView(generics.GenericAPIView):
 
 
 class BatchUserLoginView(APIView):
-    # serializer_class = BatchLoginSerializer
-    # permission_classes = [AllowAny]
+ 
     def post(self, request):
         serializer = BatchLoginSerializer(data=request.data)
         if serializer.is_valid():
