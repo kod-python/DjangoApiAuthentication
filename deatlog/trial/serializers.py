@@ -45,10 +45,10 @@ class UserSignupSerializer(serializers.ModelSerializer):
     
     
     
-    def validate(self, data):
-        if data['password'] != data['confirm_password']:
-            raise serializers.ValidationError("Passwords do not match.")
-        return data
+    # def validate(self, data):
+    #     if data['password'] != data['confirm_password']:
+    #         raise serializers.ValidationError("Passwords do not match.")
+    #     return data
 
     
     
