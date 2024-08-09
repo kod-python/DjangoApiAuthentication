@@ -11,9 +11,10 @@ class Authentic(models.Model):
     last_name = models.CharField(max_length=100, default="last_name")
     email = models.EmailField(max_length=254, unique=True)  
     password = models.CharField(max_length=200) 
-    is_verified = models.BooleanField(default=False)
-    verification_token = models.CharField(max_length=32, blank=True, null=True)
-    reset_token = models.CharField(max_length=32, blank=True, null=True)
+    # is_verified = models.BooleanField(default=False)
+    # verification_token = models.CharField(max_length=32, blank=True, null=True)
+    # reset_token = models.CharField(max_length=32, blank=True, null=True)
+    # reset_token_expiry = models.DateTimeField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -67,15 +68,15 @@ class LoginUser(models.Model):
 
 
 class CustomUser(models.Model):
-    authentic_token = models.ForeignKey(Authentic, on_delete=models.CASCADE)
+    user = models.ForeignKey(Authentic, on_delete=models.CASCADE)
     reset_token = models.CharField(max_length=32, blank=True, null=True)
     reset_token_expiry = models.DateTimeField(blank=True, null=True)
 
-# class PasswordResetToken(models.Model):
-#     user = models.ForeignKey(Authentic, on_delete=models.CASCADE)
-#     token = models.UUIDField(default=uuid.uuid4, editable=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     expires_at = models.DateTimeField()
+class PasswordResetToken(models.Model):
+    user = models.ForeignKey(Authentic, on_delete=models.CASCADE)
+    token = models.UUIDField(default=uuid.uuid4, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
 
 
 

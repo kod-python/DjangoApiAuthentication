@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'deatlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'kod_db.sqlite3',
+        'NAME': BASE_DIR / 'django_db.sqlite3',
     }
 }
 

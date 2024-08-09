@@ -122,6 +122,7 @@ class ResetEmailSerializer(serializers.Serializer):
     email = serializers.EmailField()
 
 class ConfirmTokenSerializer(serializers.Serializer):
+    
     token = serializers.CharField()
     new_password = serializers.CharField()
 

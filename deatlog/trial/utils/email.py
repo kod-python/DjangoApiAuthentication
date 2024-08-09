@@ -9,7 +9,8 @@ def generate_reset_token():
 
 def send_reset_email(email: str, token: str):
     subject = "Password Reset Request"
-    reset_link = f"{settings.RESET_URL}?token={token}"
+    # reset_link = f"{settings.RESET_URL}?token={token}"
+    reset_link = f"token={token}"
     message = f"Click the link below to reset your password:\n\n{reset_link}"
     email_message = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [email])
     email_message.send()
