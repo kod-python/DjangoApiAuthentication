@@ -118,6 +118,30 @@ class BatchLoginSerializer(serializers.Serializer):
 
 
 
+class ResetEmailSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+class ConfirmTokenSerializer(serializers.Serializer):
+    token = serializers.CharField()
+    new_password = serializers.CharField()
+
+
+
+
+
+
+
+# class ResetEmailSerializer(serializers.Serializer):
+#     email = serializers.EmailField()
+#     token = serializers.CharField()
+
+
+
+
+
+
+
+
 
 class PasswordResetRequestSerializer(serializers.ModelSerializer):
     class Meta:

@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
 from django.utils.crypto import get_random_string
+import uuid
 
 class Authentic(models.Model):
     id = models.AutoField(primary_key=True)
@@ -65,9 +66,16 @@ class LoginUser(models.Model):
 
 
 
+class CustomUser(models.Model):
+    authentic_token = models.ForeignKey(Authentic, on_delete=models.CASCADE)
+    reset_token = models.CharField(max_length=32, blank=True, null=True)
+    reset_token_expiry = models.DateTimeField(blank=True, null=True)
 
-
-
+# class PasswordResetToken(models.Model):
+#     user = models.ForeignKey(Authentic, on_delete=models.CASCADE)
+#     token = models.UUIDField(default=uuid.uuid4, editable=False)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     expires_at = models.DateTimeField()
 
 
 

@@ -6,6 +6,8 @@ from .views import SignupView
 from .views import UserLoginView
 from .views import BatchUserLoginView
 from .views import PasswordResetRequestView, PasswordResetConfirmView
+# from .views import SendResetEmailView
+from .views import RequestResetEmailView, ConfirmResetView
 
 urlpatterns = [
     path('signup/', SignupView.as_view(), name='signup'),
@@ -16,8 +18,11 @@ urlpatterns = [
     path('batch-login/', BatchUserLoginView.as_view(), name='batch-login'),
     path('password_reset/', PasswordResetRequestView.as_view(), name='password_reset_request'),
     path('password_reset/confirm/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    
+    #  path('send-reset-email/', SendResetEmailView.as_view(), name='send-reset-email'),
+      path('request-reset-email/', RequestResetEmailView.as_view(), name='request-reset-email'),
+    path('confirm-reset/', ConfirmResetView.as_view(), name='confirm-reset'),
 ]
+
 
 
 
