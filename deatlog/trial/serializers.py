@@ -8,6 +8,7 @@ from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
+from .models import CustomUser
 import logging
 
 logger = logging.getLogger(__name__)
@@ -122,9 +123,13 @@ class ResetEmailSerializer(serializers.Serializer):
     email = serializers.EmailField()
 
 class ConfirmTokenSerializer(serializers.Serializer):
-    
     token = serializers.CharField()
     new_password = serializers.CharField()
+    
+    class Meta:
+        model =CustomUser 
+        fields = ['token', 'new_password']
+  
 
 
 
